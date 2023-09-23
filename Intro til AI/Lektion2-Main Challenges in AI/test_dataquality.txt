@@ -1,0 +1,62 @@
+19114 training 4778 test, cols_to_drop = []:
+
+accuracy 76,4% with scaling, 76,7% without scaling
+
+19114*0,2 training 4778 test, cols_to_drop = []:
+
+accuracy 76,7% with scaling, 76,6% without scaling
+
+19114*0,4 training 4778 test, cols_to_drop = []:
+
+accuracy 76,1% with scaling, 76,3% without scaling
+
+19114*0,6 training 4778 test, cols_to_drop = []:
+
+accuracy 75,9% with scaling, 76,2% without scaling
+
+19114*0,8 training 4778 test, cols_to_drop = []:
+
+accuracy 74,0% with scaling, 75,4% without scaling
+
+____________________________________________________________________________________________________________________________________________________________
+
+19114 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age']:
+
+accuracy 72,1% with scaling, 70,5% without scaling
+
+19114*0,2 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age']:
+
+accuracy 72,3% with scaling, 70,6% without scaling
+
+19114*0,4 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age']:
+
+accuracy 71,8% with scaling, 70,0% without scaling
+
+19114*0,6 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age']:
+
+accuracy 71,8% with scaling, 69,5% without scaling
+
+19114*0,8 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age']:
+
+accuracy 70,5% with scaling, 67,5% without scaling
+
+____________________________________________________________________________________________________________________________________________________________
+19114 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age', 'PhysHlth', 'Stroke']
+
+accuracy 69,9% with scaling, 69,4% without scaling
+
+19114*0,2 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age', 'PhysHlth', 'Stroke']
+
+accuracy 69,9% with scaling, 69,3% without scaling
+
+19114*0,4 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age', 'PhysHlth', 'Stroke']
+
+accuracy 69,6% with scaling, 69,4% without scaling
+
+19114*0,6 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age', 'PhysHlth', 'Stroke']
+
+accuracy 69,5% with scaling, 69,4% without scaling
+
+19114*0,8 training 4778 test, ['HighBP', 'GenHlth', 'DiffWalk', 'Age', 'PhysHlth', 'Stroke']
+
+accuracy 68,6% with scaling, 69,2% without scaling
