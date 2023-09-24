@@ -113,3 +113,40 @@ if "bananas" in favorite_fruits:
     print("I like you but naaah")
 if "Oranges" in favorite_fruits:
     print("Probs the best citrus fruit")
+
+#bog opgave 5-8 og bog opgave 5-9
+usernames = ["niko8844", "thomas123", "admin", "ugabuga", "Nice4U"]
+
+for username in usernames:
+    usernames.clear()
+    if usernames:
+        if username == "admin":
+            print(f"Hello {username}, do you want a status update?")
+        else:
+            print(f"Hello {username}. Welcome to whatever this is lol")
+
+    else:
+        print("There are no users!")
+
+#bog opgave 5-10
+current_users = ["niko8844", "alex1901", "thom9817", "hayd1232", "adem2212"]
+new_users = ["mark1823", "loloa23", "haes23154", "lasdl231", "Thom9817"]
+for user in new_users:
+    if user.lower() in current_users:
+        print(f"{user} is no available! Please pick a new username")
+    else:
+        print(f"{user} was available as a username!")
+
+#bog opgave 5-11
+numbers = []
+for i in range(1, 10):
+    numbers.append(i)
+for number in numbers:
+    if number == 1:
+        print("1st")
+    elif number == 2:
+        print("2nd")
+    elif number == 3:
+        print("3rd")
+    else:
+        print(f"{number}th")

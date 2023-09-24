@@ -81,6 +81,6 @@ def watch(screen, white, center, radius, red, blue, green):
 
     pg.draw.line(screen, red, center, cal_pos(center, radius, sec, 6), 2)
     pg.draw.line(screen, blue, center, cal_pos(center, radius, minute, 6), 3)
-    pg.draw.line(screen, green, center, cal_pos(center, radius - 40, hour, 60), 4)
+    pg.draw.line(screen, green, center, cal_pos(center, radius - 40, hour, 30), 4)
 
 main()
