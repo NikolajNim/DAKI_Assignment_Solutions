@@ -1,4 +1,3 @@
-
 import random
 #bog opgave 2-1 og 2-2
 massage = "Lmao"
