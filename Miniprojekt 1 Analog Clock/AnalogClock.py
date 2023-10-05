@@ -3,9 +3,10 @@ import pygame as pg
 import math
 
 def main():
+    #initializing of all the needed variables
     pg.init()  # Initialize Pygame
     screen = pg.display.set_mode((1000, 1000))
-    white = (255.0, 255.0, 255.0)
+    white = (255, 255, 255)
     black = (0, 0, 0)
     red = (255, 0, 0)
     blue = (0, 0, 255)
@@ -18,9 +19,33 @@ def main():
     angle_step = 360 / 12
     angle_step_min = 360 / 60
 
+    #creates lists needed for end points
     endP_list = []
     endP_min_list = []
 
+    generate_watch_face(angle_step, angle_step_min, black, center, endP_list, endP_min_list, radius, screen, white)
+
+    font = pg.font.Font(None, 100)
+    for i in range(1, 13):
+        rad_angle = math.radians(i * angle_step)
+        x = center[0] + radius + 20 * math.cos(rad_angle) - 15
+        y = center[1] - radius + 20 * math.sin(rad_angle) - 20
+        number_text = font.render(str(i), True, black)
+        text_rect = number_text.get_rect()
+        text_rect.center(x, y)
+        screen.blit(number_text, text_rect)
+
+    run_flag = True
+    while run_flag is True:
+
+        watch(screen, white, center, radius - 40, red, blue, green)
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                run_flag = False
+        pg.display.flip()  # Refresh the screen so drawing appears
+
+#This function genereates the watchface using most of the initializes variables.
+def generate_watch_face(angle_step, angle_step_min, black, center, endP_list, endP_min_list, radius, screen, white):
     for i in range(60):
         angle_radian = math.radians(i * angle_step_min)
         end_x = center[0] + radius * math.cos(angle_radian)
@@ -29,6 +54,7 @@ def main():
         pg.draw.line(screen, black, center, (int(end_x), int(end_y)), 3)
 
     pg.draw.circle(screen, white, center, radius - 20)
+
     for i in range(12):
         angle_radian = math.radians(i * angle_step)
         end_x = center[0] + radius * math.cos(angle_radian)
@@ -40,29 +66,8 @@ def main():
     pg.draw.circle(screen, black, center, radius, 4)
     pg.draw.circle(screen, black, center, 4)
 
-    run_flag = True
-    while run_flag is True:
-
-        watch(screen, white, center, radius - 40, red, blue, green)
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                run_flag = False
-        pg.display.flip()  # Refresh the screen so drawing appears
-
-
-'''
-
-pg.draw.line(screen, black, (width/4, height/2), (width/3, height/2), 5)
-pg.draw.line(screen, black, (width/4*3, height/2), (width/3*2, height/2), 5)
-pg.draw.line(screen, black, (width/2, height/4*3), (width/2, height/3*2), 5)
-'''
-
-
-
-
-
-
-
+#This function is used to calculate the next position of a "watch hand"
+#This is only used for watch hands, because of the needed time parameter
 def cal_pos(center, radius, time, angle):
     angle_radian = math.radians((time - 15) * angle)
     end_x = center[0] + radius * math.cos(angle_radian)
@@ -70,6 +75,7 @@ def cal_pos(center, radius, time, angle):
 
     return (end_x, end_y)
 
+#This function is suppose to run in the while, because it moves the watchhands by implementing time
 def watch(screen, white, center, radius, red, blue, green):
     pg.draw.circle(screen, white, center, radius +10)
 

@@ -13,7 +13,7 @@ less_center = (800, 800)
 radius = 200
 box_size = (25, 25)
 #Draw 10 squares with loop
-start_pos = (700, 100)
+start_pos = (25, 25)
 for j in range(8):
     for i in range(4):
         pg.draw.rect(screen, black, ((start_pos[0] + i * 50 + (25 * (j % 2)), start_pos[1] + j * 25), box_size))

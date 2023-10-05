@@ -11,7 +11,7 @@ def main():
     print("+-------------------------------+")
     print("| King Domino points calculator |")
     print("+-------------------------------+")
-    image_path = r"/KingDomino/KingDominoTestData/65.jpg"
+    image_path = r"C:\Users\Nikolaj Nim\OneDrive - Aalborg Universitet\Dokumenter\GitHub\DAKI_Assignment_Solutions\KingDomino\KingDominoTestData\65.jpg"
     if not os.path.isfile(image_path):
         print("Image not found")
         return
@@ -64,7 +64,7 @@ def get_tiles(image):
     for y in range(5):
         tiles.append([])
         for x in range(5):
-            tiles[-1].append(image[y * 100:(y + 1) * 100, x * 100:(x + 1) * 100])
+            tiles[-1].append(image[y * 100 : (y + 1) * 100, x * 100 : (x + 1) * 100])
     return tiles
 
 
