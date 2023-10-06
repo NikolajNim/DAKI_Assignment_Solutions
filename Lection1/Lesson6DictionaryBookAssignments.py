@@ -101,4 +101,44 @@ for pet in pets:
     print(f"{pet}\n")
 
 #6-9
+favorite_places = {
+    "aland": ["marroco", "gibralta", "china"],
+    "xander": ["maldives", "india", "japan"],
+    "lawrence": ["scotland", "england", "ireland"],
+}
+for person, places in favorite_places.items():
+    print(f"{person} loves to visit all these places: {places}")
 
+#6-10
+favorite_numbers = {
+    "victor": [1, 43, 9],
+    "martin": [54, 83, 43],
+    "john": [123, 456, 789],
+}
+for person, numbers in favorite_numbers.items():
+    print(f"{person} has a lot of favorite numbers! Here they are: {numbers}")
+
+#6-11
+cities = {
+    "aalborg": {
+        "country": "denmark",
+        "population": 211.684,
+        "fact": "aalborg's biggest public attraction is the Zoo",
+    },
+    "viborg": {
+        "country": "denmark",
+        "population": 40.621,
+        "fact": "viborg was the old old capital city of denmark",
+    },
+    "skagen": {
+        "country": "denmark",
+        "population": 7.547,
+        "fact": "skagen is the northenmost city in denmark",
+    }
+}
+for city, info in cities.items():
+    print(f'{city} is located in {cities[city]["country"]}. The population is around {cities[city]["population"]} people,'
+          f' and here is and interesting fact about {city}: {cities[city]["fact"]}')
+
+#6-12
+#no
