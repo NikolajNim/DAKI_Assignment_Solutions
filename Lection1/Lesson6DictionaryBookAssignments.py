@@ -52,4 +52,53 @@ for key, value in rivers.items():
     print(value.title())
 
 #6-6
+favorite_languages = {
+ 'jen': 'python',
+ 'sarah': 'c',
+ 'edward': 'rust',
+ 'phil': 'python',}
+
+learners = ["sarah", "danni", "ruben", "adam"]
+
+for learner in learners:
+    if learner in favorite_languages.keys():
+        print(f"Hello {learner.title()}, are you loving learning {favorite_languages[learner].title()}?")
+    else:
+        print(f"Hello {learner.title()}, what programming language is your favorite?;)")
+
+#6-7
+ruben_info = {
+    "first_name": "ruben", 
+    "last:name": "jensen", 
+    "age": "21", 
+    "city": "aalborg", 
+}
+
+adam_info = {
+    "first_name": "adam", 
+    "last:name": "møller", 
+    "age": "21", 
+    "city": "aalborg", 
+}
+people_info = [
+    adam_info,
+    ruben_info,
+    emma_info
+]
+for person in people_info:
+    print(f"{person}\n")
+
+#6-8
+bowie = {"animal": "dog", "race": "flatcoated_retriever", "owner": "nikolaj"}
+nuka = {"animal": "dog", "race": "landseer", "owner": "august"}
+findus = {"animal": "cat", "race": "forestcat", "owner": "dubrika"}
+pets = [
+    bowie,
+    nuka,
+    findus
+]
+for pet in pets:
+    print(f"{pet}\n")
+
+#6-9
 
