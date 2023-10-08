@@ -115,5 +115,5 @@ def make_car(manufacturer, model, **kwargs):
     kwargs["model"] = model
     return kwargs
 
-car = make_car("toyota", "Aygo", color="White", sky_window="Sky window")
+car = make_car("toyotaa", "Aygo", color="White", sky_window="Sky window")
 print(car)
