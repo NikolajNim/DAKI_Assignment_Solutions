@@ -32,7 +32,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 run_flag = False
-        pg.display.set_caption("Nikolaj Nims Analog Ur")
+        pg.display.set_caption("Nims Analog Ur")
         pg.display.flip()  # Refresh the screen so drawing appears
 
 #This function genereates the watchface using most of the initialized variables.
