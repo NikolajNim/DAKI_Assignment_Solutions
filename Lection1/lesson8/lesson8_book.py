@@ -130,5 +130,4 @@ d20 = Die(sides=20)
 for i in range(10):
     d20.roll_die()
 
-#9-14
 
