@@ -121,12 +121,15 @@ new_car.battery.get_range()
 #9-13
 from die import Die
 d6 = Die()
+print("first d6")
 for i in range(10):
     d6.roll_die()
 d10 = Die(sides=10)
+print("D10")
 for i in range(10):
     d10.roll_die()
 d20 = Die(sides=20)
+print("d20")
 for i in range(10):
     d20.roll_die()
 
