@@ -1,4 +1,6 @@
 # 9-1
+import random
+
 from restaurant import Restaurant
 
 restaurant = Restaurant("Tortilla_Flats", "Mexican")
@@ -112,6 +114,7 @@ admin.privileges.show_privileges()
 import car as car
 
 new_car = car.ElectricCar("Tesla", "X", 2023)
+print(new_car.get_descriptive_name())
 new_car.battery.get_range()
 new_car.battery.upgrade_battery()
 new_car.battery.get_range()
@@ -133,4 +136,45 @@ print("d20")
 for i in range(10):
     d20.roll_die()
 
+def rr(lottery):
+    winning_nums = []
+    for i in range(4):
+        r_i = random.randrange(0, len(lottery))
+        winning_nums.append(lottery[r_i])
+    return winning_nums
+#9-14
+lottery = [
+    12,
+    43,
+    "s",
+    54,
+    67,
+    "h",
+    78,
+    "a",
+    28,
+    72,
+    "l",
+    51,
+    81,
+    "c",
+    93,
+]
 
+#9-15
+
+my_ticket = ["l", 78, 72, 93]
+num_of_loops = 0
+won = False
+while not won:
+    num_of_loops += 1
+    winning_nums = rr(lottery)
+    print(f"Any ticket matching these values wins a million dollars! {winning_nums}")
+    if my_ticket == winning_nums:
+        print(f"I WON!!!!!!!!! And the loops ran {num_of_loops} times")
+        won = True
+    else:
+        continue
+
+#9-16
+#jajajaj
