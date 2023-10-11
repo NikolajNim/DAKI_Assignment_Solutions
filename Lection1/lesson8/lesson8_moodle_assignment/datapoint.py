@@ -6,5 +6,4 @@ class Datapoint:
         self.label = label
         self.color = color
     def draw(self, screen):
-        black = (0,0,0)
         pg.draw.circle(screen, self.color, (self.x, self.y), 5)
