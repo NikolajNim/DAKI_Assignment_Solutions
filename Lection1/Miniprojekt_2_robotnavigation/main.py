@@ -26,7 +26,7 @@ def draw_tiles(screen, cost_grid):
             # text_x = ((box_pos[0] + box_size[0] / 2) - text_w / 2)
             # text_y = ((box_pos[1] + box_size[1] / 2) - text_h / 2)
             # text_pos = (text_x, text_y)
-            # screen.blit(text, text_pos)
+            # screen.blit(text, text_pos)2
             if cost_grid[y][x] == 0:
                 pg.draw.rect(screen, (0,177,0), (box_pos, box_size))
             elif cost_grid[y][x] == 1:
