@@ -1,6 +1,8 @@
-import pygame as pg
-from copy import deepcopy
 import random
+from copy import deepcopy
+
+import pygame as pg
+
 
 def main():
     pg.init()
