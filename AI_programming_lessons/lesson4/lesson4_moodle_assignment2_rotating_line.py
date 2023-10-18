@@ -12,24 +12,25 @@ height = screen.get_height()
 center = (width / 2, height / 2)
 
 
-
-
-#Allows object to move every second
-def rotate_line(center : tuple, length):
+# Allows object to move every second
+def rotate_line(center: tuple, length):
     second = dt.datetime.now().second
-    angle = 360/60
+    angle = 360 / 60
     rad_angle = math.radians(second * angle)
     x = center[0] + length * math.cos(rad_angle)
     y = center[1] + length * math.sin(rad_angle)
 
     return (x, y)
 
-#Draws the line right after refreashing the s
+
+# Draws the line right after refreashing the s
 def draw_line(screen, center, length, white, black):
     screen.fill(white)
     pg.draw.line(screen, black, center, rotate_line(center, length), 2)
 
 
+#continous while loop until program termination
+#Calls draw_line() every frame
 run_flag = True
 while run_flag is True:
     draw_line(screen, center, 100, white, black)
