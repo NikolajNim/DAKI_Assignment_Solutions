@@ -11,7 +11,7 @@ def main():
     black = (0, 0, 0)
     screen.fill(white)
 
-    grid = generate_2Darray(size=(64,48))
+    grid = generate_2Darray(size=(64, 48))
     for x in range(0, 62, 2):
         split_pos = random.randrange(1, 48)
         grid = grid_line(grid, (x, 0), (x, split_pos-1))

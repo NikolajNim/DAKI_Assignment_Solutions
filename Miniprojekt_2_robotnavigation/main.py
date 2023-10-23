@@ -1,9 +1,27 @@
 import random
 import pygame as pg
+import collections as col
+from queue import PriorityQueue
 
-def draw_champ_n_goal(screen, cost_grid):
+def draw_champ_n_goal(screen, cost_grid, box_size = (25, 25)):
     red = (255, 0, 0)
-    blue = (0, 0, 255)
+    magenta = (255, 0, 255)
+    width = screen.get_width()
+    height = screen.get_height()
+    rand_pos_x = random.randrange(len(cost_grid))
+    rand_pos_y = random.randrange(len(cost_grid))
+
+    player_box_pos = (rand_pos_x * box_size[0], rand_pos_y * box_size[1])
+    pg.draw.rect(screen, red, (player_box_pos, box_size))
+
+    goal_x = width - rand_pos_x * box_size[0] - box_size[0]
+    goal_y = height - rand_pos_y * box_size[1] - box_size[1]
+    goal_box_pos = (goal_x, goal_y)
+    pg.draw.rect(screen, magenta, (goal_box_pos, box_size))
+
+    return player_box_pos, goal_box_pos
+
+
 def draw_tiles(screen, cost_grid):
     width = screen.get_width()
     height = screen.get_height()
@@ -24,9 +42,9 @@ def draw_tiles(screen, cost_grid):
             if cost_grid[x][y] == 0:
                 pg.draw.rect(screen, (0,177,0), (box_pos, box_size))
             elif cost_grid[x][y] == 1:
-                pg.draw.rect(screen, (0, 100, 255), (box_pos, box_size))
-            else:
                 pg.draw.rect(screen, (4,99,4), (box_pos, box_size))
+            else:
+                pg.draw.rect(screen, (0, 100, 255), (box_pos, box_size))
             pg.draw.rect(screen, (0, 0, 0), (box_pos, box_size), 1)
 
 def cost_grid(screen):
@@ -37,8 +55,33 @@ def cost_grid(screen):
     for x in range(int(height / box_size[0])):
         box_list.append([])
         for y in range(int(width / box_size[1])):
-            box_list[x].append(random.randint(0, 2))
+            nums = [0,1,5]
+            box_list[x].append(random.choice(nums))
+
     return box_list
+
+def node_grid(screen):
+    width = screen.get_width()
+    height = screen.get_height()
+    box_size = (25, 25)
+    node_list = []
+    for x in range(0, width, box_size[0]):
+        for y in range(0, height, box_size[1]):
+            node_list.append([x, y])
+
+    return node_list
+
+def neighbors(node_list):
+    #[1, 1], [-1, -1], [1, -1], [-1, 1]
+    dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+    result = []
+    for node in node_list:
+        for di in dirs:
+            neighbor = [node[0] + di[0] * 25, node[1] + di[1] * 25]
+            if neighbor[0] < 0 or neighbor[1] < 0:
+                neighbor[0], neighbor[1] = 0, 0
+            result.append(neighbor)
+    return result
 def main():
     pg.init()
     screen = pg.display.set_mode((800, 800))
@@ -47,6 +90,17 @@ def main():
     screen.fill(white)
     grid = cost_grid(screen)
     draw_tiles(screen, grid)
+    #print(grid)
+    player_pos, goal_pos = draw_champ_n_goal(screen, grid)
+
+    nodes = node_grid(screen)
+    result = neighbors(nodes)
+    print(result)
+    print(player_pos, goal_pos)
+    if player_pos in result:
+        print("HELL YEAH")
+
+
 
 
     run_flag = True
