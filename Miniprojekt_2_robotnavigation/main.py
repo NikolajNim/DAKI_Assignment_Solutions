@@ -2,25 +2,7 @@ import random
 import pygame as pg
 import collections as col
 from queue import PriorityQueue
-
-def draw_champ_n_goal(screen, cost_grid, box_size = (25, 25)):
-    red = (255, 0, 0)
-    magenta = (255, 0, 255)
-    width = screen.get_width()
-    height = screen.get_height()
-    rand_pos_x = random.randrange(len(cost_grid))
-    rand_pos_y = random.randrange(len(cost_grid))
-
-    player_box_pos = (rand_pos_x * box_size[0], rand_pos_y * box_size[1])
-    pg.draw.rect(screen, red, (player_box_pos, box_size))
-
-    goal_x = width - rand_pos_x * box_size[0] - box_size[0]
-    goal_y = height - rand_pos_y * box_size[1] - box_size[1]
-    goal_box_pos = (goal_x, goal_y)
-    pg.draw.rect(screen, magenta, (goal_box_pos, box_size))
-
-    return player_box_pos, goal_box_pos
-
+import a_star
 
 def draw_tiles(screen, cost_grid):
     width = screen.get_width()
@@ -43,8 +25,10 @@ def draw_tiles(screen, cost_grid):
                 pg.draw.rect(screen, (0,177,0), (box_pos, box_size))
             elif cost_grid[x][y] == 1:
                 pg.draw.rect(screen, (4,99,4), (box_pos, box_size))
-            else:
+            elif cost_grid[x][y] == 5:
                 pg.draw.rect(screen, (0, 100, 255), (box_pos, box_size))
+            else:
+                pg.draw.rect(screen, (117,150,117), (box_pos, box_size))
             pg.draw.rect(screen, (0, 0, 0), (box_pos, box_size), 1)
 
 def cost_grid(screen):
@@ -55,8 +39,8 @@ def cost_grid(screen):
     for x in range(int(height / box_size[0])):
         box_list.append([])
         for y in range(int(width / box_size[1])):
-            nums = [0,1,5]
-            box_list[x].append(random.choice(nums))
+            costs = [0,1,5,100]
+            box_list[x].append(random.choice(costs))
 
     return box_list
 
@@ -90,15 +74,15 @@ def main():
     screen.fill(white)
     grid = cost_grid(screen)
     draw_tiles(screen, grid)
-    #print(grid)
-    player_pos, goal_pos = draw_champ_n_goal(screen, grid)
+    astar = a_star.AStar()
+    player_pos, goal_pos = astar.draw_champ_n_goal(screen, grid)
 
     nodes = node_grid(screen)
     result = neighbors(nodes)
     print(result)
     print(player_pos, goal_pos)
-    if player_pos in result:
-        print("HELL YEAH")
+    print(player_pos in result)
+
 
 
 
