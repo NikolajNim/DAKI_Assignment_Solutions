@@ -3,29 +3,45 @@ import random
 from queue import PriorityQueue
 class AStar:
 
-    def __init__(self):
-        pass
+    def __init__(self, grid):
+        self.grid = grid
 
     def heuristic(self, point_a, point_b):
         [x1, y1] = point_a
         [x2, y2] = point_b
 
-        return  abs(x1 - x2) + abs(y1 - y2)
+        return abs(x1 - x2) + abs(y1 - y2)
 
-    def a_star_search(self, graph, start , goal):
+    def neighbors(self, node_list, current_node):
+        # [1, 1], [-1, -1], [1, -1], [-1, 1]
+        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+        result = []
+        for node in node_list:
+            node = current_node
+            for di in dirs:
+                neighbor = [node[0] + di[0] * 25, node[1] + di[1] * 25]
+                # if neighbor[0] < 0 or neighbor[1] < 0:
+                #     neighbor[0], neighbor[1] = 0, 0
+                result.append(neighbor)
+        return result
+    def a_star_search(self, grid, start , goal):
         frontier = PriorityQueue()
-        frontier.put(start, 0)
+        frontier.put(start, True)
         came_from: dict[start] = {}
         cost_so_far: dict[start, float] = {}
         came_from[start] = None
         cost_so_far[start] = 0
 
         while not frontier.empty():
-            current: start = frontier.get()
+            current = frontier.get()
 
             if current == goal:
                 break
-
+            for next in self.neighbors(grid, current):
+                new_cost = cost_so_far[current] + grid
+                if next not in came_from:
+                    frontier.put(next)
+                    came_from[next] = current
 
 
 
