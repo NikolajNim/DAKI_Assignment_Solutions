@@ -43,7 +43,7 @@ def node_grid(screen):
     node_list = []
     for x in range(0, width, box_size[0]):
         for y in range(0, height, box_size[1]):
-            node_list.append([x, y])
+            node_list.append((x + box_size[0]/2, y + box_size[1]/2))
 
     return node_list
 
@@ -59,13 +59,15 @@ def main():
     nodes = node_grid(screen)
     astar = a_star.AStar(nodes)
     player_pos, goal_pos = astar.draw_champ_n_goal(screen, cost_grid)
+    #print(cost_grid)
+    came_from, cost_so_far = astar.a_star_search(cost_grid, nodes, player_pos, goal_pos)
+    #print(nodes)
+    path = astar.reconstruct(came_from, player_pos, goal_pos)
+    #print(path)
+    pg.draw.lines(screen, white, False, path, 2)
+    #print(came_from, cost_so_far)
+    #print(player_pos, goal_pos)
 
-
-    result = astar.neighbors(nodes, player_pos)
-    print(cost_grid)
-    print(player_pos, goal_pos)
-
-    print(player_pos in result)
 
 
 
