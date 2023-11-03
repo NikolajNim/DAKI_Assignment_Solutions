@@ -31,7 +31,7 @@ def cost(screen):
     for x in range(int(height / box_size[0])):
         cost_list.append([])
         for y in range(int(width / box_size[1])):
-            costs = [0,1,5,100]
+            costs = [0,1,5,1000]
             cost_list[x].append(random.choice(costs))
 
     return cost_list
@@ -65,7 +65,7 @@ def main():
     path = astar.reconstruct(came_from, player_pos, goal_pos)
     #print(path)
     pg.draw.lines(screen, white, False, path, 2)
-    #print(came_from, cost_so_far)
+    print(f"cost do far: {cost_so_far}")
     #print(player_pos, goal_pos)
 
 

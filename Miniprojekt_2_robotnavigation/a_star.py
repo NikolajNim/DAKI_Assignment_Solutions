@@ -16,8 +16,8 @@ class AStar:
         return abs(x1 - x2) + abs(y1 - y2)
 
     def neighbors(self, current_node, node_list):
-
-        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+        # [1, 1], [-1, -1], [1, -1], [-1, 1]
+        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
         result = []
         node = current_node
         #print(f"Node_list: {node_list}")
