@@ -17,7 +17,7 @@ class AStar:
 
     def neighbors(self, current_node, node_list):
         # [1, 1], [-1, -1], [1, -1], [-1, 1]
-        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]
         result = []
         node = current_node
         #print(f"Node_list: {node_list}")
@@ -28,6 +28,9 @@ class AStar:
             if neighbor in node_list:
                 result.append(neighbor)
         return result
+    # def cost(self, from_id: Location, to_id: Location, cost_grid):
+    #     cost = cost_grid[cost_grid.index(to_id)]
+    #     return cost
     def a_star_search(self, cost, grid, start , goal):
         frontier = PriorityQueue()
         frontier.put(start)
@@ -35,14 +38,18 @@ class AStar:
         cost_so_far = {}
         came_from[start] = None
         cost_so_far[start] = 0
-        print(f"Grid: {grid}")
+        #print(f"Grid: {grid}")
         while not frontier.empty():
             current = frontier.get()
 
             if current == goal:
                 break
             for new in self.neighbors(current, grid):
-                new_cost = cost_so_far[current] + cost[int(current[0]/25)][int(current[1]/25)]
+                # new_x = int(new[0] - 12.5)
+                # new_y = int(new[1] - 12.5)
+                #print(cost[grid.index(new)])
+                #cost[int((current[1] + 12.5) / 25) - 1][int((current[0] + 12.5) / 25) - 1]
+                new_cost = cost_so_far[current] + cost[grid.index(new)]
                 if new not in came_from or new_cost < cost_so_far[new]:
                     cost_so_far[new] = new_cost
                     priority = new_cost + self.heuristic(new, goal)
@@ -70,22 +77,24 @@ class AStar:
 
 
 
-    def draw_champ_n_goal(self, screen, cost_grid, box_size=(25, 25)):
+    def draw_champ_n_goal(self, screen, grid, box_size=(25, 25)):
         red = (255, 0, 0)
         magenta = (255, 0, 255)
         width = screen.get_width()
         height = screen.get_height()
-        rand_pos_x = random.randrange(len(cost_grid))
-        rand_pos_y = random.randrange(len(cost_grid))
+        rand_pos = random.choice(grid)
+        # rand_pos_y = random.choice(grid)
 
-        player_box_pos = (rand_pos_x * box_size[0], rand_pos_y * box_size[1])
+        player_box_pos = rand_pos
+        #p_box_pos = (player_box_pos[0] + box_size[0] / 2, player_box_pos[1] + box_size[1] / 2)
         pg.draw.rect(screen, red, (player_box_pos, box_size))
-        p_box_pos = (player_box_pos[0] + box_size[0]/2, player_box_pos[1] + box_size[1]/2)
 
-        goal_x = width - rand_pos_x * box_size[0] - box_size[0]
-        goal_y = height - rand_pos_y * box_size[1] - box_size[1]
+
+        goal_x = width - rand_pos[0] - box_size[0]
+        goal_y = height - rand_pos[1] - box_size[1]
         goal_box_pos = (goal_x, goal_y)
+        #g_box_pos = (goal_box_pos[0] + box_size[0] / 2, goal_box_pos[1] + box_size[1] / 2)
         pg.draw.rect(screen, magenta, (goal_box_pos, box_size))
-        g_box_pos = (goal_box_pos[0] + box_size[0]/2, goal_box_pos[1] + box_size[1]/2)
 
-        return p_box_pos, g_box_pos
+
+        return player_box_pos, goal_box_pos
