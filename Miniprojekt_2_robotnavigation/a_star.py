@@ -17,7 +17,7 @@ class AStar:
 
     def neighbors(self, current_node, node_list):
         # [1, 1], [-1, -1], [1, -1], [-1, 1]
-        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+        dirs = [[1, 1], [-1, -1], [1, -1], [-1, 1], [1, 0], [0, 1], [-1, 0], [0, -1]]
         result = []
         node = current_node
         #print(f"Node_list: {node_list}")
@@ -58,7 +58,7 @@ class AStar:
         return came_from, cost_so_far
 
 
-    def reconstruct(self, came_from: dict[Location, Location], start: Location, goal: Location):
+    def reconstruct(self, came_from, start: Location, goal: Location):
         current = goal
         path: list[Location] = []
         if goal not in came_from:
@@ -89,12 +89,10 @@ class AStar:
         #p_box_pos = (player_box_pos[0] + box_size[0] / 2, player_box_pos[1] + box_size[1] / 2)
         pg.draw.rect(screen, red, (player_box_pos, box_size))
 
-
         goal_x = width - rand_pos[0] - box_size[0]
         goal_y = height - rand_pos[1] - box_size[1]
         goal_box_pos = (goal_x, goal_y)
         #g_box_pos = (goal_box_pos[0] + box_size[0] / 2, goal_box_pos[1] + box_size[1] / 2)
         pg.draw.rect(screen, magenta, (goal_box_pos, box_size))
-
 
         return player_box_pos, goal_box_pos

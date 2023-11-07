@@ -33,9 +33,9 @@ import random
 #     return cost_list
 
 def color_picker(rand_num):
-    if rand_num == 0:
+    if rand_num == 1:
         return (0, 177, 0)
-    elif rand_num == 1:
+    elif rand_num == 2:
         return (4, 99, 4)
     elif rand_num == 5:
         return (0, 100, 255)
@@ -52,7 +52,7 @@ def node_grid(screen):
         for y in range(0, height, box_size[1]):
             #print(x, y)
             node_list.append((x, y))
-            costs = [0, 1, 5, 1000]
+            costs = [1, 2, 5, 10000]
             random_choice = random.choice(costs)
             box_pos = (x, y)
             pg.draw.rect(screen, color_picker(random_choice), (box_pos, box_size))

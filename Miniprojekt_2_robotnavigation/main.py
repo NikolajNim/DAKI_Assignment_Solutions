@@ -48,7 +48,6 @@ import test_miniproject
 #
 #     return node_list
 
-
 def main():
     pg.init()
     screen = pg.display.set_mode((800, 800))
@@ -61,13 +60,13 @@ def main():
     # nodes = node_grid(screen)
     astar = a_star.AStar(nodes)
     player_pos, goal_pos = astar.draw_champ_n_goal(screen, nodes)
-    #print(cost_grid)
     came_from, cost_so_far = astar.a_star_search(cost_grid, nodes, player_pos, goal_pos)
-    #print(nodes)
     path = astar.reconstruct(came_from, player_pos, goal_pos)
-    #print(path)
     new_path = [(x + 12.5, y + 12.5) for x, y in path]
-    #print(new_path)
+    # print(cost_grid)
+    # print(nodes)
+    #print(path)
+    # #print(new_path)
     # for i in enumerate(path):
     #     popped = path.pop(i)
     #     new_point = (popped[0] + 12.5, popped[1] + 12.5)
@@ -75,7 +74,7 @@ def main():
     # print(path)
 
 
-    pg.draw.lines(screen, white, False, new_path, 2)
+    pg.draw.lines(screen, white, False, new_path, 3)
     #print(f"cost do far: {cost_so_far}")
     #print(player_pos, goal_pos)
     #print(random.choice(nodes))
