@@ -58,21 +58,19 @@ class AStar:
         return came_from, cost_so_far
 
 
-    def reconstruct(self, came_from: dict[Location, Location], start: Location, goal: Location):
+    def reconstruct(self, came_from, start, goal):
         current = goal
-        path: list[Location] = []
+        print(f"came_from_dict before: {came_from}")
+        path = []
         if goal not in came_from:
             print("LMAO")
             return []
         while current != start:
+
             path.append(current)
             current = came_from[current]
         path.append(start)
-        path.reverse()
-        # for point in path:
-        #     new_point = (point[0]+12, point[1]+12)
-        #     path.remove(point)
-        #     path.append(new_point)
+        print(f"came_from_dict after: {came_from}")
         return path
 
 

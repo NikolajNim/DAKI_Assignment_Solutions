@@ -53,7 +53,6 @@ def main():
     pg.init()
     screen = pg.display.set_mode((800, 800))
     white = (255, 255, 255)
-    black = (0, 0, 0)
     screen.fill(white)
     nodes, cost_grid = test_miniproject.node_grid(screen)
     # cost_grid = cost(screen)
@@ -67,7 +66,7 @@ def main():
     path = astar.reconstruct(came_from, player_pos, goal_pos)
     #print(path)
     new_path = [(x + 12.5, y + 12.5) for x, y in path]
-    #print(new_path)
+    print(new_path)
     # for i in enumerate(path):
     #     popped = path.pop(i)
     #     new_point = (popped[0] + 12.5, popped[1] + 12.5)
@@ -80,8 +79,8 @@ def main():
     #print(player_pos, goal_pos)
     #print(random.choice(nodes))
     #print(cost_grid[0])
-    print(nodes)
-    print(cost_grid)
+    #print(nodes)
+    #print(cost_grid)
 
     run_flag = True
     while run_flag:
