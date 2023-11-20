@@ -11,7 +11,7 @@ def main():
 
     datapoints_sea_bass = instantiate_sea_bass(screen, 100)
 
-    new_datapoint = Datapoint(440, 250, label=None, color=(0, 255, 0))
+    new_datapoint = Datapoint(400, 300, label=None, color=(0, 255, 0))
     new_datapoint.draw(screen)
 
     knn = KNN()

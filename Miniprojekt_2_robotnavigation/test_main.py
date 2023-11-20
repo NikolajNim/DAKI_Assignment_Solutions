@@ -18,7 +18,7 @@ def test_main():
     screen.fill(white)
 
     nodes = node_grid(screen)
-    print(nodes)
+    
 
 
     run_flag = True
