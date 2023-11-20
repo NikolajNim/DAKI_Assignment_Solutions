@@ -17,7 +17,7 @@ class AStar:
 
     def neighbors(self, current_node, node_list):
         # [1, 1], [-1, -1], [1, -1], [-1, 1]
-        dirs = [[1, 1], [-1, -1], [1, -1], [-1, 1], [1, 0], [0, 1], [-1, 0], [0, -1]]
+        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
         result = []
         node = current_node
         #print(f"Node_list: {node_list}")

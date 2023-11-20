@@ -61,3 +61,24 @@ def node_grid(screen):
             cost_list.append(random_choice)
 
     return node_list, cost_list
+def node_grid1(screen):
+    width = screen.get_width()
+    height = screen.get_height()
+    box_size = (25, 25)
+    node_list = []
+    cost_list = []
+    for x in range(0, width, box_size[0]):
+        for y in range(0, height, box_size[1]):
+            node_list.append((x, y))
+            costs = [1, 2, 5, 10000]
+            if x % 2 == 0 and y % 2 == 0:
+                random_choice = costs[3]
+            else:
+                random_choice = costs[0]
+            box_pos = (x, y)
+            pg.draw.rect(screen, color_picker(random_choice), (box_pos, box_size))
+            pg.draw.rect(screen, (0, 0, 0), (box_pos, box_size), 1)
+
+            cost_list.append(random_choice)
+
+    return node_list, cost_list
