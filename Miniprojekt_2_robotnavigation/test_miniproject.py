@@ -70,7 +70,7 @@ def node_grid1(screen):
     for x in range(0, width, box_size[0]):
         for y in range(0, height, box_size[1]):
             node_list.append((x, y))
-            costs = [1, 2, 5, 10000]
+            costs = [1, 2, 5, 10000000000]
             if x % 2 == 0 and y % 2 == 0:
                 random_choice = costs[3]
             else:

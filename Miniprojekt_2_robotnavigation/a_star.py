@@ -1,5 +1,4 @@
-from typing import Tuple, TypeVar
-
+from typing import TypeVar
 import pygame as pg
 import random
 from queue import PriorityQueue
@@ -9,20 +8,20 @@ class AStar:
     def __init__(self, grid):
         self.grid = grid
 
-    def heuristic(self, point_a, point_b):
+    def heuristic(self, point_a, point_b) -> float:
         [x1, y1] = point_a
         [x2, y2] = point_b
 
         return abs(x1 - x2) + abs(y1 - y2)
 
     def neighbors(self, current_node, node_list):
-        # [1, 1], [-1, -1], [1, -1], [-1, 1]
-        dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+        # x [-1, -1], [1, -1], [-1, 1]
+        dirs = [[25, 0], [0, 25], [-25, 0], [0, -25]]
         result = []
         node = current_node
         #print(f"Node_list: {node_list}")
         for di in dirs:
-            neighbor = (node[0] + di[0] * 25, node[1] + di[1] * 25)
+            neighbor = (node[0] + di[0], node[1] + di[1])
             #print(f"Neighbor: {neighbor}")
             #print(neighbor in node_list)
             if neighbor in node_list:
@@ -45,10 +44,6 @@ class AStar:
             if current == goal:
                 break
             for new in self.neighbors(current, grid):
-                # new_x = int(new[0] - 12.5)
-                # new_y = int(new[1] - 12.5)
-                #print(cost[grid.index(new)])
-                #cost[int((current[1] + 12.5) / 25) - 1][int((current[0] + 12.5) / 25) - 1]
                 new_cost = cost_so_far[current] + cost[grid.index(new)]
                 if new not in came_from or new_cost < cost_so_far[new]:
                     cost_so_far[new] = new_cost
@@ -58,13 +53,10 @@ class AStar:
         return came_from, cost_so_far
 
 
-<<<<<<< HEAD
     def reconstruct(self, came_from, start, goal):
-=======
-    def reconstruct(self, came_from, start: Location, goal: Location):
->>>>>>> 100c07e4caea685edb4fc399094a8903b54b401c
+
         current = goal
-        print(f"came_from_dict before: {came_from}")
+        # print(f"came_from_dict before: {came_from}")
         path = []
         if goal not in came_from:
             print("LMAO")
