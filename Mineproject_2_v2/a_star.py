@@ -14,6 +14,7 @@ class Astar:
 
     def cost(self, p):
         # This method defines the cost of a specific value in the matrix.
+        # The cost refers to the movement cost of a tile on the map made from the matrix.
         cost = [1, 2, 5, 1000]
         return cost[self.matrix[p[0]][p[1]] - 1]
 
@@ -79,7 +80,7 @@ class Astar:
 
     def heuristic(self, a, b):
         # This method calculates the distance between two point(a and b).
-        # It is used to help the algorithm prioritize what direction to choose.
+        # It is used to help the A* algorithm prioritize what direction to choose.
         (ax, ay) = a
         (bx, by) = b
         return abs(ax - bx) + abs(ay - by)
@@ -93,6 +94,7 @@ class Astar:
         cost_so_far[a] = 0
 
         while frontier:
+            # frontier is a list
             current_priority, current = heapq.heappop(frontier)
 
             if current == b:
