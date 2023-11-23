@@ -55,6 +55,7 @@ class Astar:
 
         # The position of b is based on the position of a.
         # By subtracting the matrix size with a, the opposite position is the result.
+        # And this is the chosen position for b.
         bx = self.matrix_size[0] - ax
         by = self.matrix_size[1] - ay
         b_pos = (bx * self.box_size[0] - self.box_size[0], by * self.box_size[1] - self.box_size[1])
