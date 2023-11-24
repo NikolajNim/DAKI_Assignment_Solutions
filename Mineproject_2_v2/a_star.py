@@ -88,6 +88,8 @@ class Astar:
 
     def astar_search(self, a, b):
         # This method searches for point b starting from point a.
+        # frontier is a list filled with tuples,
+        # that contains a priority (0 in the initialization) and a point in the matrix (a is the starting point)
         frontier = [(0, a)]
         came_from = {}
         cost_so_far = {}
@@ -95,7 +97,7 @@ class Astar:
         cost_so_far[a] = 0
 
         while frontier:
-            # frontier is a list
+            # Here the list is checked for conte
             current_priority, current = heapq.heappop(frontier)
 
             if current == b:
@@ -110,7 +112,7 @@ class Astar:
                     heapq.heappush(frontier, (priority, next_node))
                     came_from[next_node] = current
 
-        return came_from, cost_so_far
+        return came_from
 
     def reconstruct(self, came_from, a, b):
         current = b

@@ -15,7 +15,7 @@ def initialize_astar():
     astar.draw_grid(screen)
     a, b = astar.draw_a_b(screen)
 
-    came_from, cost_so_far = astar.astar_search(a, b)
+    came_from = astar.astar_search(a, b)
     path = astar.reconstruct(came_from, a, b)
 
     scaled_path = [(x * 25, y * 25) for x, y in path]
