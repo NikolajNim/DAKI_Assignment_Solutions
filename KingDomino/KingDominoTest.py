@@ -10,7 +10,7 @@ def main():
     print("+-------------------------------+")
     print("| King Domino points calculator |")
     print("+-------------------------------+")
-    image_path = r"C:\Users\Nikolaj Nim\OneDrive - Aalborg Universitet\Dokumenter\GitHub\DAKI_Assignment_Solutions\KingDomino\KingDominoTestData\37.jpg"
+    image_path = r"C:\Users\Nikolaj Nim\OneDrive - Aalborg Universitet\Dokumenter\GitHub\DAKI_Assignment_Solutions\KingDomino\KingDominoTestData\1.jpg"
     if not os.path.isfile(image_path):
         print("Image not found")
         return

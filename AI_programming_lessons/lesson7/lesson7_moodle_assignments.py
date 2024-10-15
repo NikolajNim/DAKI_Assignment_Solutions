@@ -12,7 +12,8 @@ def main():
     screen.fill(white)
 
     grid = generate_2Darray(size=(64, 48))
-    for x in range(0, 62, 2):
+    print(grid)
+    for x in range(0, 64, 2):
         split_pos = random.randrange(1, 48)
         grid = grid_line(grid, (x, 0), (x, split_pos-1))
         grid = grid_line(grid, (x, split_pos+1), (x, 48-1))
@@ -26,6 +27,7 @@ def main():
             if event.type == pg.QUIT:
                 run_flag = False
         pg.display.flip()
+
 def generate_2Darray(size=(64, 48)):
     grid = []
     for i in range(size[1]):
